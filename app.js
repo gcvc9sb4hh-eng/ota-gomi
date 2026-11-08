@@ -133,7 +133,7 @@ function renderArea() {
   $("#src").textContent = SCHEDULE_SOURCE;
 }
 
-function renderAll() { renderHeader(); renderToday(); renderCal(); renderSearch(); renderArea(); }
+function renderAll() { renderHeader(); renderToday(); renderCal(); renderSearch(); renderArea(); if (typeof renderVisual === "function") renderVisual(); }
 
 // ---- 操作 ----
 function show(v) {

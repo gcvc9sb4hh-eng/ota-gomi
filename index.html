@@ -43,6 +43,16 @@
     <ul id="weekRule" class="week-rule"></ul>
   </section>
 
+  <!-- 出し方（図解） -->
+  <section id="view-guide" class="view">
+    <h2 class="sec">🤔 迷ったらチャート</h2>
+    <div id="tree" class="tree"></div>
+    <h2 class="sec">種類ごとの出し方</h2>
+    <div id="visual"></div>
+    <h2 class="sec">よくある物の出し方</h2>
+    <div id="howto"></div>
+  </section>
+
   <!-- 分別検索 -->
   <section id="view-search" class="view">
     <input id="q" type="search" placeholder="例：ペットボトル、電池、フライパン" autocomplete="off">
@@ -71,11 +81,13 @@
 <nav class="tabs">
   <button data-view="today" class="on" type="button"><span>📅</span>きょう</button>
   <button data-view="cal" type="button"><span>🗓️</span>カレンダー</button>
-  <button data-view="search" type="button"><span>🔍</span>分別検索</button>
+  <button data-view="guide" type="button"><span>🎨</span>出し方</button>
+  <button data-view="search" type="button"><span>🔍</span>検索</button>
   <button data-view="area" type="button"><span>📍</span>地域</button>
 </nav>
 
 <script src="data.js"></script>
 <script src="app.js"></script>
+<script src="guide.js"></script>
 </body>
 </html>
