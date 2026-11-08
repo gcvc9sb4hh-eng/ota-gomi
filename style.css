@@ -1,0 +1,111 @@
+:root {
+  --pla: #d99a00; --shigen: #2e9e5b; --kanen: #e5533d; --funen: #2f7bd9;
+  --sodai: #8a5cc7; --other: #6b7280;
+  --bg: #f6f7f5; --card: #fff; --text: #1f2328; --sub: #5f6670; --line: #e3e5e1;
+}
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0; background: var(--bg); color: var(--text);
+  font-family: -apple-system, BlinkMacSystemFont, "Hiragino Sans", "Noto Sans JP", sans-serif;
+  font-size: 16px; line-height: 1.55;
+  padding-bottom: calc(72px + env(safe-area-inset-bottom));
+}
+.top {
+  position: sticky; top: 0; z-index: 5; background: var(--card);
+  display: flex; align-items: center; justify-content: space-between; gap: 8px;
+  padding: calc(10px + env(safe-area-inset-top)) 16px 10px; border-bottom: 1px solid var(--line);
+}
+.top h1 { font-size: 18px; margin: 0; color: var(--shigen); }
+.area-btn {
+  border: 1px solid var(--line); background: var(--bg); border-radius: 999px;
+  padding: 6px 12px; font-size: 13px; color: var(--text); max-width: 60%;
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
+main { max-width: 560px; margin: 0 auto; padding: 12px 14px; }
+.view { display: none; }
+.view.active { display: block; }
+.sec { font-size: 15px; color: var(--sub); margin: 20px 2px 8px; }
+.note { font-size: 14px; color: var(--sub); margin: 12px 2px; }
+.small { font-size: 12px; }
+.warn { background: #fff4d6; border: 1px solid #f0d78a; border-radius: 12px; padding: 10px 12px; font-size: 14px; margin-bottom: 10px; }
+a { color: var(--funen); }
+
+/* 今日・明日カード */
+.day-card { background: var(--card); border-radius: 18px; padding: 16px; margin-bottom: 12px; box-shadow: 0 1px 3px rgba(0,0,0,.06); }
+.day-card .when { font-size: 14px; color: var(--sub); }
+.day-card .when b { font-size: 18px; color: var(--text); margin-right: 6px; }
+.day-card .none { font-size: 20px; color: var(--sub); margin-top: 6px; }
+.big { display: flex; align-items: center; gap: 12px; margin-top: 10px; padding: 12px 14px; border-radius: 14px; color: #fff; }
+.big .ico { font-size: 30px; }
+.big .name { font-size: 24px; font-weight: 700; }
+.big .how { font-size: 13px; opacity: .95; margin-top: 2px; line-height: 1.45; }
+.bg-pla { background: var(--pla); } .bg-shigen { background: var(--shigen); }
+.bg-kanen { background: var(--kanen); } .bg-funen { background: var(--funen); }
+.day-card.tomorrow .big { padding: 8px 12px; }
+.day-card.tomorrow .big .name { font-size: 18px; }
+.day-card.tomorrow .big .ico { font-size: 22px; }
+
+.next-list, .week-rule, .results { list-style: none; margin: 0; padding: 0; }
+.next-list li, .week-rule li {
+  display: flex; align-items: center; gap: 10px; background: var(--card);
+  border-radius: 12px; padding: 12px 14px; margin-bottom: 8px;
+}
+.dot { width: 12px; height: 12px; border-radius: 50%; flex: none; }
+.next-list .lab { font-weight: 700; flex: 1; }
+.next-list .d { text-align: right; }
+.next-list .left { font-size: 12px; color: var(--sub); display: block; }
+.week-rule .lab { font-weight: 700; width: 7.5em; flex: none; }
+
+/* カレンダー */
+.cal-head { display: flex; align-items: center; justify-content: space-between; }
+.cal-head h2 { font-size: 18px; margin: 4px 0; }
+.cal-head button { font-size: 26px; width: 44px; height: 44px; border: none; background: var(--card); border-radius: 50%; }
+.legend { display: flex; flex-wrap: wrap; gap: 6px 12px; font-size: 12px; margin: 8px 2px; }
+.legend span { display: inline-flex; align-items: center; gap: 4px; }
+.cal-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 3px; }
+.cal-grid .wd { text-align: center; font-size: 12px; color: var(--sub); padding: 4px 0; }
+.cal-grid .wd.sun { color: var(--kanen); } .cal-grid .wd.sat { color: var(--funen); }
+.cell { background: var(--card); border-radius: 8px; min-height: 64px; padding: 3px 2px; font-size: 12px; }
+.cell.empty { background: transparent; }
+.cell.today { outline: 2px solid var(--shigen); }
+.cell .n { display: block; text-align: center; font-weight: 600; }
+.cell .t { display: block; color: #fff; border-radius: 4px; text-align: center; font-size: 10px; margin-top: 2px; line-height: 1.5; }
+
+/* 検索 */
+input[type=search], select {
+  width: 100%; font-size: 17px; padding: 12px 14px; border-radius: 12px;
+  border: 1px solid var(--line); background: var(--card); color: var(--text);
+}
+.results { margin-top: 10px; }
+.results li { background: var(--card); border-radius: 12px; padding: 12px 14px; margin-bottom: 8px; }
+.results .nm { font-weight: 700; }
+.results .tag { display: inline-block; color: #fff; font-size: 12px; padding: 2px 8px; border-radius: 999px; margin: 4px 6px 0 0; }
+.results .memo { font-size: 13px; color: var(--sub); margin-top: 4px; }
+.results .nextd { font-size: 13px; margin-top: 2px; }
+.tag.pla { background: var(--pla); } .tag.shigen { background: var(--shigen); }
+.tag.kanen { background: var(--kanen); } .tag.funen { background: var(--funen); }
+.tag.sodai { background: var(--sodai); } .tag.other { background: var(--other); }
+.card { background: var(--card); border-radius: 14px; padding: 14px; margin-top: 12px; border-left: 6px solid var(--line); }
+.card h3 { margin: 0 0 6px; font-size: 16px; }
+.card p { margin: 4px 0; font-size: 14px; }
+.card ul { margin: 6px 0 0; padding-left: 1.2em; font-size: 13px; color: var(--sub); }
+.card.sodai { border-left-color: var(--sodai); }
+
+/* 地域 */
+.lbl { display: block; font-size: 13px; color: var(--sub); margin: 14px 2px 6px; }
+.blocks button {
+  display: block; width: 100%; text-align: left; background: var(--card); border: 2px solid var(--line);
+  border-radius: 12px; padding: 12px 14px; margin-bottom: 8px; font-size: 15px; color: var(--text);
+}
+.blocks button.on { border-color: var(--shigen); background: #eef8f1; }
+
+/* タブ */
+.tabs {
+  position: fixed; left: 0; right: 0; bottom: 0; z-index: 10; background: var(--card);
+  border-top: 1px solid var(--line); display: grid; grid-template-columns: repeat(4, 1fr);
+  padding-bottom: env(safe-area-inset-bottom);
+}
+.tabs button { border: none; background: none; padding: 8px 0 10px; font-size: 11px; color: var(--sub); display: flex; flex-direction: column; align-items: center; gap: 2px; }
+.tabs button span { font-size: 22px; line-height: 1; }
+.tabs button.on { color: var(--shigen); font-weight: 700; }
